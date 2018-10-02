@@ -444,18 +444,27 @@ class Block extends DataObject implements PermissionProvider
      */
     public function isPublishedIcon()
     {
-        $obj = DBHTMLText::create();
-        if ($this->isPublished()) {
-            $obj->setValue('<span>'._t('Block.IsPublishedField', 'Published')  .'</span>');
-        } else {
-            $obj->setValue( '<span class="badge version-status version-status--modified">Modified</span>');
-            //$obj->setValue('<img src="' . FRAMEWORK_ADMIN_DIR . '/images/alert-bad.gif" />');
+         $obj = DBHTMLText::create();
+
+        if ($this->isOnDraftOnly()) {
+
+            $obj->setValue( '<span class="badge version-status addedtodraft version-status--modified">'._t(__CLASS__ . '.DRAFT', 'Draft') .'</span>');
+        }elseif ($this->isModifiedOnDraft()) {
+
+
+            $obj->setValue( '<span class="badge version-status  version-status--modified">'. _t(__CLASS__ . '.MODIFIED', 'Modified') .'</span>');
+
+        }
+        else {
+
+            if ($this->isPublished()) {
+                $obj->setValue('<span>' . _t('Block.IsPublishedField', 'Published') . '</span>');
+            } else {
+                $obj->setValue('<span class="badge version-status version-status--modified">Not Published</span>');
+                //$obj->setValue('<img src="' . FRAMEWORK_ADMIN_DIR . '/images/alert-bad.gif" />');
+            }
         }
         return $obj;
-    }
-
-    public function isPublishedField(){
-        return $this->isPublishedIcon();
     }
 
     /**
