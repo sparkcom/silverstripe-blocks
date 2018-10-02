@@ -507,8 +507,10 @@ class Block extends DataObject implements PermissionProvider
         if ($this->controller) {
             return $this->controller;
         }
-        foreach (array_reverse(ClassInfo::ancestry($this->class)) as $blockClass) {
+        foreach (array_reverse(ClassInfo::ancestry($this)) as $label=> $blockClass) {
+            $blockClass = str_replace('\\Model\\', "\\Controllers\\", $blockClass);
             $controllerClass = "{$blockClass}Controller";
+            
             if (class_exists($controllerClass)) {
                 break;
             }
