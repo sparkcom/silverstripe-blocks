@@ -113,7 +113,7 @@ class BlockManager extends ViewableData
 
 	public function getBlockClasses()
 	{
-		$classes = ArrayLib::valuekey(ClassInfo::subclassesFor("SheaDawson\Blocks\model\Block"));
+		$classes = ArrayLib::valuekey(ClassInfo::subclassesFor("SheaDawson\\Blocks\\Model\\Block"));
 		array_shift($classes);
 		foreach ($classes as $k => $v) {
 			$classes[$k] = singleton($k)->singular_name();
