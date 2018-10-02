@@ -19,7 +19,7 @@
         "silverstripe/framework": "^4.0",
         "silverstripe/cms": "^4.0",
         "symbiote/silverstripe-gridfieldextensions": "^3.0",
-        "symbiote/silverstripe-multivaluefield": "^4.0"
+        "symbiote/silverstripe-multivaluefield": "^5.0"
     },
     "require-dev": {
         "phpunit/PHPUnit": "^5.7"
