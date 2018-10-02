@@ -35,6 +35,11 @@ class BlockController extends Controller
         return;
     }
 
+	
+    public function init()
+    {
+        parent::init(); 
+    }
     /**
      * @param string $action
      *
