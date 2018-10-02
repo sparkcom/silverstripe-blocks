@@ -36,9 +36,9 @@ class GridFieldConfigBlockManager extends GridFieldConfig
         parent::__construct();
 
         $this->blockManager = Injector::inst()->get('SheaDawson\\Blocks\\BlockManager');
-        $controllerClass = Controller::curr()->class;
+        $controllerClass = get_class(Controller::curr());
         // Get available Areas (for page) or all in case of ModelAdmin
-        if ($controllerClass == 'CMSPageEditController') {
+        if ($controllerClass == 'SilverStripe\\CMS\\Controllers\\CMSPageEditController') {
             $currentPage = Controller::curr()->currentPage();
             $areasFieldSource = $this->blockManager->getAreasForPageType($currentPage->ClassName);
         } else {
