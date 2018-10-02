@@ -151,7 +151,7 @@ class Block extends DataObject implements PermissionProvider
             $fields->addFieldToTab('Root.Main', DropdownField::create('ClassName', _t('Block.BlockType', 'Block Type'), $classes)->addExtraClass('block-type'), 'Title');
 
             // BlockArea - display areas field if on page edit controller
-            if (Controller::curr()->class == 'CMSPageEditController') {
+            if (get_class(Controller::curr()) == 'SilverStripe\\CMS\\Controllers\\CMSPageEditController') {
                 $currentPage = Controller::curr()->currentPage();
                 $areas = $self->blockManager->getAreasForPageType($currentPage->ClassName);
                 $fields->addFieldToTab(
@@ -167,7 +167,7 @@ class Block extends DataObject implements PermissionProvider
                 }
 
                 if (BlockManager::config()->get('block_area_preview')) {
-                    $blockAreaField->setRightTitle($currentPage->areasPreviewButton());
+                   $blockAreaField->setRightTitle( DBHTMLText::create()->setValue($currentPage->areasPreviewButton()));
                 }
             }
 
