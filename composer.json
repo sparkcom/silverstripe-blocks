@@ -1,7 +1,7 @@
 {
     "name": "sheadawson/silverstripe-blocks",
     "description": "An alternative to the SilverStripe Widgets module.",
-    "type": "silverstripe-module",
+    "type": "silverstripe-vendormodule",
     "keywords": [
         "silverstripe",
         "blocks",
@@ -34,7 +34,12 @@
         "installer-name": "blocks",
         "branch-alias": {
             "dev-master": "2.0.x-dev"
-        }
+        },
+		"expose": [
+        "client"
+      
+
+      ]
     },
     "autoload": {
     	"psr-4": {
