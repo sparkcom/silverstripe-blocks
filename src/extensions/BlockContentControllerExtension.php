@@ -17,9 +17,9 @@ class BlocksContentControllerExtension extends Extension
     public function onAfterInit()
     {
         if ($this->owner->data()->canEdit() && $this->owner->getRequest()->getVar('block_preview') == 1) {
-           Requirements::javascript('silverstripe/admin: thirdparty/jquery/jquery.js');
-            Requirements::javascript(BLOCKS_DIR.'/javascript/block-preview.js');
-            Requirements::css(BLOCKS_DIR.'/css/block-preview.css');
+          Requirements::javascript('silverstripe/admin:thirdparty/jquery/jquery.js');
+            Requirements::javascript('sheadawson/silverstripe-blocks:/client/javascript/block-preview.js');
+            Requirements::css('sheadawson/silverstripe-blocks:/client/css/block-preview.css');
         }
     }
 
