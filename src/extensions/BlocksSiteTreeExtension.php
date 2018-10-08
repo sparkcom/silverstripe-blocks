@@ -157,7 +157,7 @@ class BlocksSiteTreeExtension extends SiteTreeExtension
 	public function BlockArea($area, $limit = null)
 	{
 		if ($this->owner->ID <= 0) {
-			return;
+			//return;
 		} // blocks break on fake pages ie Security/login
 
 		$list = $this->getBlockList($area);
