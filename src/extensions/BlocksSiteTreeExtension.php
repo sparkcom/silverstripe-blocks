@@ -172,6 +172,8 @@ class BlocksSiteTreeExtension extends SiteTreeExtension
 			$list = $list->limit($limit);
 		}
 
+		$this->owner->extend('OnBeforeRender', $list, $area);
+		
 		$data = [];
 		$data['HasBlockArea'] = ($this->owner->canEdit() && isset($_REQUEST['block_preview']) && $_REQUEST['block_preview']) || $list->Count() > 0;
 		$data['BlockArea'] = $list;
