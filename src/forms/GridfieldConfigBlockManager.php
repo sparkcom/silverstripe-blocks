@@ -37,6 +37,8 @@ class GridFieldConfigBlockManager extends GridFieldConfig
 
         $this->blockManager = Injector::inst()->get('SheaDawson\\Blocks\\BlockManager');
         $controllerClass = get_class(Controller::curr());
+
+        $currentPage = null;
         // Get available Areas (for page) or all in case of ModelAdmin
         if ($controllerClass == 'SilverStripe\\CMS\\Controllers\\CMSPageEditController') {
             $currentPage = Controller::curr()->currentPage();
@@ -104,7 +106,7 @@ class GridFieldConfigBlockManager extends GridFieldConfig
 
         if ($canAdd) {
             $multiClass = new GridFieldAddNewMultiClass();
-            $classes = $this->blockManager->getBlockClasses();
+            $classes = $this->blockManager->getBlockClasses($currentPage ? $currentPage->ClassName :  '');
             $multiClass->setClasses($classes);
             $this->addComponent($multiClass);
             //$this->addComponent(new GridFieldAddNewButton());
