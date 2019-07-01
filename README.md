@@ -55,6 +55,10 @@ SheaDawson\Blocks\BlockManager:
 			except: HomePage # a AfterContent area will be available on all page types except HomePage
 		Footer: true # a Footer area will be available on all page types
 	options:
+	    #allowed_blocks:
+		  HomePage: # List all the block that are allowed for this page class
+		    - ContentBlock
+			- PictureBlock
 		#use_blocksets: false # Whether to use BlockSet functionality (default if undeclared: true)
 		#use_extra_css_classes: true # Whether to allow cms users to add extra css classes to blocks (default if undeclared: false)
 		#prefix_default_css_classes: 'myprefix--' # prefix the automatically generated CSSClasses based on class name (default if undeclared: false)
