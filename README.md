@@ -69,7 +69,7 @@ SheaDawson\Blocks\BlockManager:
 		#allowed_blocks:
 		  HomePage: # List all the block that are allowed for this page class
 		    - ContentBlock
-			- PictureBlock
+		  - PictureBlock
 ```
 
 Remember to run `?flush=1` after modifying your `.yml` config to make sure it gets applied.
