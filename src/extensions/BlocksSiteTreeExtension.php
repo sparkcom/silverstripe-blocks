@@ -88,6 +88,8 @@ class BlocksSiteTreeExtension extends SiteTreeExtension
 			return;
 		}
 
+		if($this-owner->ID < 1) return; 
+		
 		$areas = $this->blockManager->getAreasForPageType($this->owner->ClassName);
 
 		if ($areas && count($areas)) {
