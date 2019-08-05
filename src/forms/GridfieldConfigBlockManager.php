@@ -130,10 +130,12 @@ class GridFieldConfigBlockManager extends GridFieldConfig
     {
         $classes = $this->blockManager->getBlockClasses();
 
-        $this->addComponent($add = new GridFieldAddExistingSearchButton());
-        $add->setSearchList(Block::get()->filter(array(
-            'ClassName' => array_keys($classes),
-        )));
+        if($classes) {
+            $this->addComponent($add = new GridFieldAddExistingSearchButton());
+            $add->setSearchList(Block::get()->filter(array(
+                'ClassName' => array_keys($classes),
+            )));
+        }
 
         return $this;
     }
