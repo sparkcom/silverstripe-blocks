@@ -111,7 +111,7 @@ class BlockManager extends ViewableData
 		}
 	}
 
-	public function getBlockClasses($pageClass='')
+	public function getBlockClasses()
 	{
 		$classes = ArrayLib::valuekey(ClassInfo::subclassesFor("SheaDawson\\Blocks\\Model\\Block"));
 		array_shift($classes);
@@ -126,21 +126,6 @@ class BlockManager extends ViewableData
 	    } else if (!$config['use_default_blocks']) {
 	        unset($classes['ContentBlock']);
 	    }
-
-		//only the allowed blocks can appear
-		if($pageClass){
-			if (isset($config['allowed_blocks'][$pageClass])){
-				$allowedClasses = $config['allowed_blocks'][$pageClass];
-				if($allowedClasses && is_array($allowedClasses)){
-					foreach ($classes as $key => $aClass){
-						if( ! in_array( $key, $allowedClasses))
-							unset( $classes [ $key]);
-					}
-				}
-
-			}
-		}
-
 
 		$disabledArr = Config::inst()->get("BlockManager", 'disabled_blocks') ? Config::inst()->get("BlockManager", 'disabled_blocks') : [];
 		if (isset($config['disabled_blocks'])) {
