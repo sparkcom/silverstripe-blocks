@@ -216,7 +216,7 @@ class BlocksSiteTreeExtension extends SiteTreeExtension
 	 *
 	 * @return ArrayList
 	 * */
-	public function getBlockList($area = null, $includeDisabled = false)
+		public function getBlockList($area = null, $includeDisabled = false)
 	{
 		$includeSets = $this->blockManager->getUseBlockSets() && $this->owner->InheritBlockSets;
 		$blocks = ArrayList::create();
@@ -249,6 +249,8 @@ class BlocksSiteTreeExtension extends SiteTreeExtension
 				}
 			}
 		}
+
+		$this->owner->extend('updateBlockList', $blocks, $area);
 
 		return $blocks;
 	}
